@@ -13,9 +13,7 @@ public class Personne {
         this.contact = contact;
     }
 
-    public String getIdentifiant(){
-        return identifiant;
-    }
+    public String getIdentifiant(){return identifiant;}
     public String getNom(){
         return nom;
     }

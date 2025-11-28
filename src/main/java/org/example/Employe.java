@@ -1,13 +1,13 @@
 package org.example;
 
-import java.util.Date;
-
 public class Employe extends Personne {
     private int NumeroEmploye;
     private String DateEmbauche;
 
-    public Employe(int NumeroEmploye, String DateEmbauche){
-        super(NumeroEmploye, DateEmbauche);
+    public Employe(String identifiant, String nom, String adresse, String contact){
+        super(identifiant, nom, adresse, contact);
+        this.NumeroEmploye = NumeroEmploye;
+        this.DateEmbauche = DateEmbauche;
     }
     public int getNumeroEmploye(){
         return NumeroEmploye;
@@ -18,7 +18,7 @@ public class Employe extends Personne {
     }
 
     @Override
-    public String ObtenirRole(identifiant identifiant){
+    public String ObtenirRole(){
         return "C'est un (role) ";
     }
 }
