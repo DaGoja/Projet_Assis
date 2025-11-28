@@ -1,4 +1,4 @@
-package org.example;
+package Nathanielle;
 
 public class Passager extends Personne{
     private String Passeport;
