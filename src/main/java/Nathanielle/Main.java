@@ -43,7 +43,7 @@ public class Main {
         );
 
         // ===================== 4. Création d'un vol ==========================
-        Vol volParisRome = new Vol(
+        volParisRome = new Vol(
                 "TO350",
                 cdg,
                 fco,
