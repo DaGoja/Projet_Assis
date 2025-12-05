@@ -1,4 +1,4 @@
-public class MainCompagnieAerienne {
+public class Main {
 
     public static void main(String[] args) {
 
@@ -33,15 +33,14 @@ public class MainCompagnieAerienne {
 
         // ===================== 4. Création d'un vol ==========================
         Vol volParisRome = new Vol(
-                "TO350",               // numéro de vol
-                cdg,                   // aéroport d'origine
-                fco,                   // aéroport de destination
-                "25/12/2024 10:15",    // date/heure départ
-                "25/12/2024 12:45",    // date/heure arrivée
-                "PLANIFIE"             // état
+                "TO350",
+                cdg,
+                fco,
+                "25/12/2024 10:15",
+                "25/12/2024 12:45",
+                "PLANIFIE"
         );
 
-        // On associe l'avion et l'équipage au vol
         avion1.affecterVol(volParisRome);
         volParisRome.setPilote(pilote);
         volParisRome.ajouterMembreCabine(hotesse);
@@ -55,31 +54,29 @@ public class MainCompagnieAerienne {
                 "AA123456"
         );
 
-        // Affichage des infos de la personne (méthode du sujet)
         System.out.println("=== Informations sur le passager ===");
         passager1.obtenirInfos();
 
-        // ===================== 6. Réservation d'un vol =======================
+        // ===================== 6. Réservation du vol =======================
         System.out.println("\n=== Réservation du vol ===");
         Reservation reservation1 = passager1.reserverVol(
                 volParisRome,
-                "RES001",          // numéro de réservation
-                "20/12/2024"       // date de réservation
+                "RES001",
+                "20/12/2024"
         );
         System.out.println("Réservation créée : " + reservation1.getNumeroReservation()
                 + " pour le vol " + reservation1.getVol().getNumeroVol());
 
-        // Confirmation de la réservation
         reservation1.confirmerReservation();
         System.out.println("Statut de la réservation : " + reservation1.getStatut());
 
-        // ===================== 7. Listing des passagers du vol ===============
+        // ===================== 7. Listing des passagers =====================
         System.out.println("\n=== Liste des passagers du vol TO350 ===");
         for (Passager p : volParisRome.listingPassager()) {
             System.out.println("- " + p.getNom() + " (passeport : " + p.getPasseport() + ")");
         }
 
-        // ===================== 8. Test de la méthode obtenirRole =============
+        // ===================== 8. Test des rôles =============================
         System.out.println("\n=== Rôle des employés ===");
         System.out.println("Pilote : " + Employe.obtenirRole("EMP001"));
         System.out.println("Personnel cabine : " + Employe.obtenirRole("EMP002"));
@@ -89,13 +86,12 @@ public class MainCompagnieAerienne {
         passager1.annulerReservation("RES001");
         System.out.println("Nouveau statut : " + reservation1.getStatut());
 
-        // Après annulation, il ne devrait plus apparaître dans la liste active
         System.out.println("\n=== Liste des passagers après annulation ===");
         for (Passager p : volParisRome.listingPassager()) {
             System.out.println("- " + p.getNom());
         }
 
-        // ===================== 10. Exemple de recherche CRUD =================
+        // ===================== 10. Recherche CRUD ============================
         System.out.println("\n=== Recherche de vol par numéro ===");
         Vol volTrouve = Vol.chercherParNumero("TO350");
         if (volTrouve != null) {
