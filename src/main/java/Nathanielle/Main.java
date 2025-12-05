@@ -2,8 +2,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        GestionFichiersCompagnie.importFlight();
-        GestionFichiersCompagnie.exportFlight();
+        GestionFichiersCompagnie.importFlights();
+        GestionFichiersCompagnie.exportFlights();
 
         Vol volParisRome = Vol.chercherParNumero("TO350");
         if (volParisRome != null) {
