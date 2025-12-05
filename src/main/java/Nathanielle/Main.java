@@ -2,6 +2,17 @@ public class Main {
 
     public static void main(String[] args) {
 
+        GestionFichiersCompagnie.importFlight();
+        GestionFichiersCompagnie.exportFlight();
+
+        Vol volParisRome = Vol.chercherParNumero("TO350");
+        if (volParisRome != null) {
+            GestionFichiersCompagnie.saveListPassengers(volParisRome);
+        }
+
+        System.out.println("Programme terminé.");
+    
+
         // ===================== 1. Création des aéroports =====================
         Aeroport cdg = new Aeroport("CDG", "Paris", "Paris Charles de Gaulle");
         Aeroport fco = new Aeroport("FCO", "Rome", "Rome Fiumicino");
