@@ -2,6 +2,11 @@ public class Main {
 
     public static void main(String[] args) {
 
+        // Séance 2 test
+        GestionFichiersCompagnie.importVols("vols.csv");
+
+        // Séance 1 test
+
         Aeroport cdg = new Aeroport("CDG", "Paris", "Charles de Gaulle");
         Aeroport fco = new Aeroport("FCO", "Rome", "Fiumicino");
 
@@ -38,6 +43,8 @@ public class Main {
         for (Passager p : volParisRome.listingPassager()) {
             System.out.println(p.getNom());
         }
+
+        // Séance 2 tet
+        GestionFichiersCompagnie.sauvegarderReservations("reservations.csv");
     }
 }
-
