@@ -5,7 +5,6 @@ public class Employe extends Personne {
     private String numeroEmploye;
     private String dateEmbauche;
 
-    // on garde aussi une liste des employés
     private static ArrayList<Employe> listeEmployes = new ArrayList<>();
 
     public Employe(String identifiant, String nom, String adresse, String contact,
@@ -13,32 +12,22 @@ public class Employe extends Personne {
         super(identifiant, nom, adresse, contact);
         this.numeroEmploye = numeroEmploye;
         this.dateEmbauche = dateEmbauche;
-
         listeEmployes.add(this);
     }
 
-    /**
-     * Méthode générique : par défaut "Employé".
-     * Sera redéfinie dans Pilote / PersonnelCabine.
-     */
     public String obtenirRole() {
         return "Employé";
     }
 
-    /**
-     * Version décrite dans l’énoncé :
-     * on donne un identifiant et on renvoie le rôle.
-     */
-    public static String obtenirRole(String identifiant) {
+    public static String obtenirRole(String identifiantEmploye) {
         for (Employe e : listeEmployes) {
-            if (e.getIdentifiant().equals(identifiant)) {
+            if (e.getIdentifiant().equals(identifiantEmploye)) {
                 return e.obtenirRole();
             }
         }
         return "Inconnu";
     }
 
-    // ---- CRUD basique ----
     public static Employe chercherParNumero(String numero) {
         for (Employe e : listeEmployes) {
             if (e.numeroEmploye.equals(numero)) return e;
@@ -51,8 +40,6 @@ public class Employe extends Personne {
         if (e != null) return listeEmployes.remove(e);
         return false;
     }
-
-    // Getters / setters
 
     public String getNumeroEmploye() {
         return numeroEmploye;
@@ -68,9 +55,5 @@ public class Employe extends Personne {
 
     public void setDateEmbauche(String dateEmbauche) {
         this.dateEmbauche = dateEmbauche;
-    }
-
-    public static ArrayList<Employe> getListeEmployes() {
-        return listeEmployes;
     }
 }
