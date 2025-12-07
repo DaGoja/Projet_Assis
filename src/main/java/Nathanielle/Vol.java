@@ -24,7 +24,9 @@ public class Vol {
         this.dateHeureDepart = dateHeureDepart;
         this.dateHeureArrivee = dateHeureArrivee;
         this.etat = etat;
+
         listeVols.add(this);
+
         if (origine != null) origine.affecterVol(this);
         if (destination != null) destination.affecterVol(this);
     }
@@ -45,7 +47,9 @@ public class Vol {
     public ArrayList<Passager> listingPassager() {
         ArrayList<Passager> liste = new ArrayList<>();
         for (Reservation r : reservations) {
-            if (!r.getStatut().equals("ANNULEE")) liste.add(r.getPassager());
+            if (!"ANNULEE".equals(r.getStatut())) {
+                liste.add(r.getPassager());
+            }
         }
         return liste;
     }
@@ -56,7 +60,9 @@ public class Vol {
 
     public void setPilote(Pilote pilote) {
         this.pilote = pilote;
-        if (pilote != null) pilote.affecterVol(this);
+        if (pilote != null) {
+            pilote.affecterVol(this);
+        }
     }
 
     public void ajouterMembreCabine(PersonnelCabine p) {
@@ -67,12 +73,16 @@ public class Vol {
     }
 
     public void ajouterReservation(Reservation r) {
-        if (!reservations.contains(r)) reservations.add(r);
+        if (!reservations.contains(r)) {
+            reservations.add(r);
+        }
     }
 
     public static Vol chercherParNumero(String numero) {
         for (Vol v : listeVols) {
-            if (v.numeroVol.equals(numero)) return v;
+            if (v.numeroVol.equals(numero)) {
+                return v;
+            }
         }
         return null;
     }
@@ -83,7 +93,23 @@ public class Vol {
 
     public static boolean supprimerParNumero(String numero) {
         Vol v = chercherParNumero(numero);
-        if (v != null) return listeVols.remove(v);
+        if (v != null) {
+            return listeVols.remove(v);
+        }
         return false;
+    }
+
+    // ==== méthodes utilisées par Main et GestionFichiersCompagnie ====
+
+    public static ArrayList<Vol> getListeVols() {
+        return listeVols;
+    }
+
+    public ArrayList<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public String getNumeroVol() {
+        return numeroVol;
     }
 }
