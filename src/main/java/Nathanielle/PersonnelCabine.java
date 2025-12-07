@@ -18,9 +18,7 @@ public class PersonnelCabine extends Employe {
     }
 
     public void affecterVol(Vol vol) {
-        if (!volsAffectes.contains(vol)) {
-            volsAffectes.add(vol);
-        }
+        if (!volsAffectes.contains(vol)) volsAffectes.add(vol);
     }
 
     public ArrayList<Vol> obtenirVol() {
