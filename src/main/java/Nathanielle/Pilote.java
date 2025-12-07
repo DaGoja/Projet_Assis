@@ -4,8 +4,6 @@ public class Pilote extends Employe {
 
     private String licence;
     private int heuresDeVol;
-
-    // les vols sur lesquels ce pilote est affecté
     private ArrayList<Vol> volsAffectes = new ArrayList<>();
 
     public Pilote(String identifiant, String nom, String adresse, String contact,
@@ -22,16 +20,13 @@ public class Pilote extends Employe {
     }
 
     public void affecterVol(Vol vol) {
-        if (!volsAffectes.contains(vol)) {
-            volsAffectes.add(vol);
-        }
+        if (!volsAffectes.contains(vol)) volsAffectes.add(vol);
     }
 
     public ArrayList<Vol> obtenirVol() {
         return volsAffectes;
     }
 
-    // Getters / setters
     public String getLicence() {
         return licence;
     }
