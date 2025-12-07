@@ -2,7 +2,7 @@ public class Reservation {
 
     private String numeroReservation;
     private String dateReservation;
-    private String statut;      // EN_ATTENTE / CONFIRMEE / ANNULEE
+    private String statut;
 
     private Passager passager;
     private Vol vol;
@@ -28,22 +28,12 @@ public class Reservation {
         this.vol = nouveauVol;
     }
 
-    // Getters / setters
-
     public String getNumeroReservation() {
         return numeroReservation;
     }
 
-    public void setNumeroReservation(String numeroReservation) {
-        this.numeroReservation = numeroReservation;
-    }
-
     public String getDateReservation() {
         return dateReservation;
-    }
-
-    public void setDateReservation(String dateReservation) {
-        this.dateReservation = dateReservation;
     }
 
     public String getStatut() {
