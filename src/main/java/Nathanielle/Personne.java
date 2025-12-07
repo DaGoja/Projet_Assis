@@ -2,13 +2,11 @@ import java.util.ArrayList;
 
 public class Personne {
 
-    // Attributs de base d'une personne
     private String identifiant;
     private String nom;
     private String adresse;
     private String contact;
 
-    // Petite "base" en mémoire pour faire du CRUD
     private static ArrayList<Personne> listePersonnes = new ArrayList<>();
 
     public Personne(String identifiant, String nom, String adresse, String contact) {
@@ -16,19 +14,12 @@ public class Personne {
         this.nom = nom;
         this.adresse = adresse;
         this.contact = contact;
-
-        // à chaque création on ajoute la personne dans la liste
         listePersonnes.add(this);
     }
 
-    /**
-     * Affiche les infos de la personne (décrit dans l’énoncé).
-     */
-    public void obtenirInfos() {
-        System.out.println(this);
+    public String obtenirInfos() {
+        return identifiant + " | " + nom + " | " + adresse + " | " + contact;
     }
-
-    // ---- CRUD très simple sur la liste statique ----
 
     public static Personne chercherParIdentifiant(String id) {
         for (Personne p : listePersonnes) {
@@ -41,28 +32,13 @@ public class Personne {
 
     public static boolean supprimerParIdentifiant(String id) {
         Personne p = chercherParIdentifiant(id);
-        if (p != null) {
-            return listePersonnes.remove(p);
-        }
+        if (p != null) return listePersonnes.remove(p);
         return false;
     }
 
     public static ArrayList<Personne> getListePersonnes() {
         return listePersonnes;
     }
-
-    // toString pour avoir un affichage propre
-    @Override
-    public String toString() {
-        return "Personne{" +
-                "id='" + identifiant + '\'' +
-                ", nom='" + nom + '\'' +
-                ", adresse='" + adresse + '\'' +
-                ", contact='" + contact + '\'' +
-                '}';
-    }
-
-    // Getters / setters (classiques)
 
     public String getIdentifiant() {
         return identifiant;
