@@ -11,24 +11,16 @@ public class Passager extends Personne {
         this.passeport = passeport;
     }
 
-    /**
-     * Le passager réserve un vol.
-     * Ici je passe le numéro de réservation et la date en paramètre,
-     * mais tu peux adapter plus tard.
-     */
     public Reservation reserverVol(Vol vol, String numeroReservation, String dateReservation) {
-        Reservation r = new Reservation(numeroReservation, dateReservation,
-                "EN_ATTENTE", this, vol);
-
+        Reservation r = new Reservation(numeroReservation, dateReservation, "EN_ATTENTE", this, vol);
         listeReservations.add(r);
         vol.ajouterReservation(r);
-
         return r;
     }
 
-    public boolean annulerReservation(String numeroReservation) {
+    public boolean annulerReservation(String numero) {
         for (Reservation r : listeReservations) {
-            if (r.getNumeroReservation().equals(numeroReservation)) {
+            if (r.getNumeroReservation().equals(numero)) {
                 r.annulerReservation();
                 return true;
             }
